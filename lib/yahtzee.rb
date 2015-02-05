@@ -39,16 +39,21 @@ class Category
 	def aces?
 	  if roll.include?(1)
 		  @score = roll.count(1) * 1
-      puts score
       true
     else
       @score = 0
-      puts score
       false
     end
 	end
 
 	def twos?
+	  if roll.include?(2)
+		  @score = roll.count(2) * 2
+      true
+    else
+      @score = 0
+      false
+    end
 	end
 
 	def threes?

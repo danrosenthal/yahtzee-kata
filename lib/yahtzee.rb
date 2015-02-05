@@ -77,6 +77,13 @@ class Category
 	end
 
 	def fives?
+	  if roll.include?(5)
+		  @score = roll.count(5) * 5
+      true
+    else
+      @score = 0
+      false
+    end
 	end
 
 	def sixes?

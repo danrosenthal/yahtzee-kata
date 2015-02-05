@@ -58,4 +58,18 @@ describe Category do
     expect(roll.fours?).to be false
     expect(roll.score).to be == 0
   end
+  
+  it "is fives" do 
+    roll = Category.new(5, 5, 5, 1, 1)
+    expect(roll.fives?).to be true
+    expect(roll.score).to be == 15
+    
+    roll = Category.new(5, 5, 1, 2, 2)
+    expect(roll.fives?).to be true
+    expect(roll.score).to be == 10
+    
+    roll = Category.new(1, 2, 1, 3, 3) 
+    expect(roll.fives?).to be false
+    expect(roll.score).to be == 0
+  end
 end

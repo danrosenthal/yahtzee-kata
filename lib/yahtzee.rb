@@ -57,6 +57,13 @@ class Category
 	end
 
 	def threes?
+	  if roll.include?(3)
+		  @score = roll.count(3) * 3
+      true
+    else
+      @score = 0
+      false
+    end
 	end
 
 	def fours?

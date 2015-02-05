@@ -30,4 +30,18 @@ describe Category do
     expect(roll.twos?).to be false
     expect(roll.score).to be == 0
   end
+  
+  it "is threes" do 
+    roll = Category.new(3, 3, 3, 1, 1)
+    expect(roll.threes?).to be true
+    expect(roll.score).to be == 9
+    
+    roll = Category.new(3, 3, 1, 4, 4)
+    expect(roll.threes?).to be true
+    expect(roll.score).to be == 6
+    
+    roll = Category.new(1, 2, 1, 4, 4) 
+    expect(roll.threes?).to be false
+    expect(roll.score).to be == 0
+  end
 end

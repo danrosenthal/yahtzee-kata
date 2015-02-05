@@ -72,4 +72,18 @@ describe Category do
     expect(roll.fives?).to be false
     expect(roll.score).to be == 0
   end
+  
+  it "is sixes" do 
+    roll = Category.new(6, 6, 6, 1, 1)
+    expect(roll.sixes?).to be true
+    expect(roll.score).to be == 18
+    
+    roll = Category.new(6, 6, 1, 2, 2)
+    expect(roll.sixes?).to be true
+    expect(roll.score).to be == 12
+    
+    roll = Category.new(1, 2, 1, 3, 3) 
+    expect(roll.sixes?).to be false
+    expect(roll.score).to be == 0
+  end
 end

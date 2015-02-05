@@ -87,6 +87,13 @@ class Category
 	end
 
 	def sixes?
+	  if roll.include?(6)
+		  @score = roll.count(6) * 6
+      true
+    else
+      @score = 0
+      false
+    end
 	end
 
 	# Lower section categories

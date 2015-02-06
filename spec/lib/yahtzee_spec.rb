@@ -91,5 +91,27 @@ describe Category do
     roll = Category.new(6, 6, 6, 1, 1)
     expect(roll.three_of_a_kind?).to be true
     expect(roll.score).to be == 20
+    
+    roll = Category.new(3, 3, 3, 1, 1)
+    expect(roll.three_of_a_kind?).to be true
+    expect(roll.score).to be == 11
+    
+    roll = Category.new(1, 2, 3, 4, 5)
+    expect(roll.three_of_a_kind?).to be false
+    expect(roll.score).to be == 0
+  end
+  
+  it "is three of a kind" do 
+    roll = Category.new(6, 6, 6, 6, 1)
+    expect(roll.four_of_a_kind?).to be true
+    expect(roll.score).to be == 25
+    
+    roll = Category.new(3, 3, 3, 3, 1)
+    expect(roll.four_of_a_kind?).to be true
+    expect(roll.score).to be == 13
+    
+    roll = Category.new(1, 2, 3, 4, 5)
+    expect(roll.four_of_a_kind?).to be false
+    expect(roll.score).to be == 0
   end
 end

@@ -101,35 +101,53 @@ class Category
 	def three_of_a_kind?
      if roll.count(1) >= 3
        @score = add_them_up
-       puts score
        true
      elsif roll.count(2) >= 3
        @score = add_them_up
-       puts score
        true
      elsif roll.count(3) >= 3
        @score = add_them_up
-       puts score
        true
      elsif roll.count(4) >= 3
        @score = add_them_up
-       puts score
        true
      elsif roll.count(5) >= 3
        @score = add_them_up
-       puts score
        true
      elsif roll.count(6) >= 3
        @score = add_them_up
-       puts score
        true
      else
       @score = 0
+      puts score
       false
      end
 	end
 
 	def four_of_a_kind?
+     if roll.count(1) >= 4
+       @score = add_them_up
+       true
+     elsif roll.count(2) >= 4
+       @score = add_them_up
+       true
+     elsif roll.count(3) >= 4
+       @score = add_them_up
+       true
+     elsif roll.count(4) >= 4
+       @score = add_them_up
+       true
+     elsif roll.count(5) >= 4
+       @score = add_them_up
+       true
+     elsif roll.count(6) >= 4
+       @score = add_them_up
+       true
+     else
+      @score = 0
+      puts score
+      false
+     end
 	end
 
 	def full_house?

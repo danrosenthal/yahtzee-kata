@@ -99,6 +99,34 @@ class Category
 	# Lower section categories
 
 	def three_of_a_kind?
+     if roll.count(1) >= 3
+       @score = add_them_up
+       puts score
+       true
+     elsif roll.count(2) >= 3
+       @score = add_them_up
+       puts score
+       true
+     elsif roll.count(3) >= 3
+       @score = add_them_up
+       puts score
+       true
+     elsif roll.count(4) >= 3
+       @score = add_them_up
+       puts score
+       true
+     elsif roll.count(5) >= 3
+       @score = add_them_up
+       puts score
+       true
+     elsif roll.count(6) >= 3
+       @score = add_them_up
+       puts score
+       true
+     else
+      @score = 0
+      false
+     end
 	end
 
 	def four_of_a_kind?
@@ -117,6 +145,12 @@ class Category
 	end
 	
 	def to_s
+	end
+	
+	private
+	
+	def add_them_up
+	  d1 + d2 + d3 + d4 + d5
 	end
 	
 end

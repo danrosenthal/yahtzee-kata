@@ -86,4 +86,10 @@ describe Category do
     expect(roll.sixes?).to be false
     expect(roll.score).to be == 0
   end
+  
+  it "is three of a kind" do 
+    roll = Category.new(6, 6, 6, 1, 1)
+    expect(roll.three_of_a_kind?).to be true
+    expect(roll.score).to be == 20
+  end
 end

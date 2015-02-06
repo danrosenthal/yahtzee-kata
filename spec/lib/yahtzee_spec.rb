@@ -101,7 +101,7 @@ describe Category do
     expect(roll.score).to be == 0
   end
   
-  it "is three of a kind" do 
+  it "is four of a kind" do 
     roll = Category.new(6, 6, 6, 6, 1)
     expect(roll.four_of_a_kind?).to be true
     expect(roll.score).to be == 25
@@ -112,6 +112,24 @@ describe Category do
     
     roll = Category.new(1, 2, 3, 4, 5)
     expect(roll.four_of_a_kind?).to be false
+    expect(roll.score).to be == 0
+  end
+  
+  it "is a full house" do 
+    roll = Category.new(6, 6, 6, 4, 4)
+    expect(roll.full_house?).to be true
+    expect(roll.score).to be == 25
+    
+    roll = Category.new(3, 3, 2, 2, 2)
+    expect(roll.full_house?).to be true
+    expect(roll.score).to be == 25
+    
+    roll = Category.new(1, 1, 1, 1, 1)
+    expect(roll.full_house?).to be true
+    expect(roll.score).to be == 25
+    
+    roll = Category.new(1, 2, 3, 4, 5)
+    expect(roll.full_house?).to be false
     expect(roll.score).to be == 0
   end
 end

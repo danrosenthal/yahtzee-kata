@@ -119,7 +119,6 @@ class Category
        true
      else
       @score = 0
-      puts score
       false
      end
 	end
@@ -145,12 +144,18 @@ class Category
        true
      else
       @score = 0
-      puts score
       false
      end
 	end
 
 	def full_house?
+	  if ((d1 == d2 && d2 == d3) && (d4 == d5)) || ((d1 == d2) && (d3 == d4 && d4 == d5))
+	    @score = 25
+	    true
+    else
+      @score = 0
+      false
+    end
 	end
 
 	def small_straight?

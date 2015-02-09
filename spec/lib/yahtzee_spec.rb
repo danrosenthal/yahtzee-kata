@@ -28,15 +28,23 @@ describe Category do
   it "is twos" do 
     roll = Category.new(2, 2, 2, 1, 1)
     expect(roll.twos?).to be true
-    #expect(roll.score).to be == 6
     
     roll = Category.new(2, 2, 1, 4, 4)
     expect(roll.twos?).to be true
-    #expect(roll.score).to be == 4
     
     roll = Category.new(1, 3, 1, 4, 4) 
     expect(roll.twos?).to be false
-    #expect(roll.score).to be == 0
+  end
+  
+  it "scores twos" do
+    roll = Category.new(2, 2, 2, 1, 1)
+    expect(roll.score_of_twos!).to be == 6
+    
+    roll = Category.new(2, 2, 1, 4, 4)
+    expect(roll.score_of_twos!).to be == 4
+    
+    roll = Category.new(1, 3, 1, 4, 4) 
+    expect(roll.score_of_twos!).to be == 0
   end
   
   it "is threes" do 

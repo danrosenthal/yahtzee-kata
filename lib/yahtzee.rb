@@ -1,26 +1,3 @@
-# Yahtzee Kata Outline
-# Lets start by thinking about all the nouns that are used to 
-# describe scoring a game of Yahtzee. 
-# 
-# * Game
-# * Dice
-# * Round
-# * Player
-# * Category
-# * Score
-# 
-# The system we are creating doesn’t need to create the entire game, 
-# it just needs to give the score for one roll. So, given a roll 
-# and a category, the system should output the score for the roll 
-# placed in that category.
-
-# Based on this idea, we would want to have a Category class that 
-# takes in the dice on a roll as arguments, and contains methods 
-# that define each of the categories and evaluate the roll based on 
-# those categories. It should then return a score.
-
-# So, let’s do some dummy code.
-
 class Category
 
   attr_accessor :roll, :d1, :d2, :d3, :d4, :d5, :score
@@ -123,6 +100,11 @@ class Category
   end
   
   def score_of_twos!
+    if twos?
+      @score = roll.count(2) * 2
+    else
+      @score = 0
+    end
   end
   
   def score_of_threes!

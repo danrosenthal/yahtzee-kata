@@ -24,156 +24,156 @@
 class Category
 
   attr_accessor :roll, :d1, :d2, :d3, :d4, :d5, :score
-	def initialize(d1, d2, d3, d4, d5)
-	  @roll = [d1, d2, d3, d4, d5].sort
-	  @d1 = d1
-	  @d2 = d2
-	  @d3 = d3
-	  @d4 = d4
-	  @d5 = d5
-	  @score = 0
-	end
+  def initialize(d1, d2, d3, d4, d5)
+    @roll = [d1, d2, d3, d4, d5].sort
+    @d1 = d1
+    @d2 = d2
+    @d3 = d3
+    @d4 = d4
+    @d5 = d5
+    @score = 0
+  end
 
-	# Upper section categories
+  # Upper section categories
 
-	def aces?
-	  if roll.include?(1)
-		  @score = roll.count(1) * 1
+  def aces?
+    if roll.include?(1)
+      @score = roll.count(1) * 1
       true
     else
       @score = 0
       false
     end
-	end
+  end
 
-	def twos?
-	  if roll.include?(2)
-		  @score = roll.count(2) * 2
+  def twos?
+    if roll.include?(2)
+      @score = roll.count(2) * 2
       true
     else
       @score = 0
       false
     end
-	end
+  end
 
-	def threes?
-	  if roll.include?(3)
-		  @score = roll.count(3) * 3
+  def threes?
+    if roll.include?(3)
+      @score = roll.count(3) * 3
       true
     else
       @score = 0
       false
     end
-	end
+  end
 
-	def fours?
-	  if roll.include?(4)
-		  @score = roll.count(4) * 4
+  def fours?
+    if roll.include?(4)
+      @score = roll.count(4) * 4
       true
     else
       @score = 0
       false
     end
-	end
+  end
 
-	def fives?
-	  if roll.include?(5)
-		  @score = roll.count(5) * 5
+  def fives?
+    if roll.include?(5)
+      @score = roll.count(5) * 5
       true
     else
       @score = 0
       false
     end
-	end
+  end
 
-	def sixes?
-	  if roll.include?(6)
-		  @score = roll.count(6) * 6
+  def sixes?
+    if roll.include?(6)
+      @score = roll.count(6) * 6
       true
     else
       @score = 0
       false
     end
-	end
+  end
 
-	# Lower section categories
+  # Lower section categories
 
-	def three_of_a_kind?
-     if roll.count(1) >= 3
-       @score = add_them_up
-       true
-     elsif roll.count(2) >= 3
-       @score = add_them_up
-       true
-     elsif roll.count(3) >= 3
-       @score = add_them_up
-       true
-     elsif roll.count(4) >= 3
-       @score = add_them_up
-       true
-     elsif roll.count(5) >= 3
-       @score = add_them_up
-       true
-     elsif roll.count(6) >= 3
-       @score = add_them_up
-       true
-     else
-      @score = 0
-      false
-     end
-	end
-
-	def four_of_a_kind?
-     if roll.count(1) >= 4
-       @score = add_them_up
-       true
-     elsif roll.count(2) >= 4
-       @score = add_them_up
-       true
-     elsif roll.count(3) >= 4
-       @score = add_them_up
-       true
-     elsif roll.count(4) >= 4
-       @score = add_them_up
-       true
-     elsif roll.count(5) >= 4
-       @score = add_them_up
-       true
-     elsif roll.count(6) >= 4
-       @score = add_them_up
-       true
-     else
-      @score = 0
-      false
-     end
-	end
-
-	def full_house?
-	  if ((d1 == d2 && d2 == d3) && (d4 == d5)) || ((d1 == d2) && (d3 == d4 && d4 == d5))
-	    @score = 25
-	    true
+  def three_of_a_kind?
+    if roll.count(1) >= 3
+      @score = add_them_up
+      true
+    elsif roll.count(2) >= 3
+      @score = add_them_up
+      true
+    elsif roll.count(3) >= 3
+      @score = add_them_up
+      true
+    elsif roll.count(4) >= 3
+      @score = add_them_up
+      true
+    elsif roll.count(5) >= 3
+      @score = add_them_up
+      true
+    elsif roll.count(6) >= 3
+      @score = add_them_up
+      true
     else
       @score = 0
       false
     end
-	end
+  end
 
-	def small_straight?
-	end
+  def four_of_a_kind?
+    if roll.count(1) >= 4
+      @score = add_them_up
+      true
+    elsif roll.count(2) >= 4
+      @score = add_them_up
+      true
+    elsif roll.count(3) >= 4
+      @score = add_them_up
+      true
+    elsif roll.count(4) >= 4
+      @score = add_them_up
+      true
+    elsif roll.count(5) >= 4
+      @score = add_them_up
+      true
+    elsif roll.count(6) >= 4
+      @score = add_them_up
+      true
+    else
+      @score = 0
+      false
+    end
+  end
 
-	def large_straight?
-	end
+  def full_house?
+    if ((d1 == d2 && d2 == d3) && (d4 == d5)) || ((d1 == d2) && (d3 == d4 && d4 == d5))
+      @score = 25
+      true
+    else
+      @score = 0
+      false
+    end
+  end
 
-	def yahtzee?
-	end
-	
-	def to_s
-	end
-	
-	private
-	
-	def add_them_up
-	  d1 + d2 + d3 + d4 + d5
-	end
-	
+  def small_straight?
+  end
+
+  def large_straight?
+  end
+
+  def yahtzee?
+  end
+  
+  def to_s
+  end
+  
+  private
+  
+  def add_them_up
+    d1 + d2 + d3 + d4 + d5
+  end
+  
 end

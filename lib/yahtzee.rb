@@ -91,9 +91,11 @@ class Category
   def to_s
   end
   
+  # upper section scoring methods
+  
   def score_of_aces!
     if aces?
-      @score = roll.count(1) * 1
+      @score = count_em_up(1)
     else
       @score = 0
     end
@@ -101,7 +103,7 @@ class Category
   
   def score_of_twos!
     if twos?
-      @score = roll.count(2) * 2
+      @score = count_em_up(2)
     else
       @score = 0
     end
@@ -109,13 +111,18 @@ class Category
   
   def score_of_threes!
     if threes?
-      @score = roll.count(3) * 3
+      @score = count_em_up(3)
     else
       @score = 0
     end
   end
   
   def score_of_fours!
+    if fours?
+      @score = count_em_up(4)
+    else
+      @score = 0
+    end
   end
   
   def score_of_fives!
@@ -128,6 +135,10 @@ class Category
   
   def add_them_up
     d1 + d2 + d3 + d4 + d5
+  end
+  
+  def count_em_up(num)
+    roll.count(num) * num
   end
   
 end

@@ -102,6 +102,12 @@ class Category
     @score = count_em_up(6) if sixes?
   end
   
+  # lower section scoring methods
+  
+  def score_of_three_of_a_kind!
+    @score = add_them_up if three_of_a_kind?
+  end
+  
   private
   
   def add_them_up; roll.reduce(:+); end

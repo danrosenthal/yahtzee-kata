@@ -153,18 +153,28 @@ describe Category do
     expect(roll.score_of_sixes!).to be nil
   end
   
+  # three of a kind tests
+  
   it "is three of a kind" do 
     roll = Category.new(6, 6, 6, 1, 1)
     expect(roll.three_of_a_kind?).to be true
-    #expect(roll.score).to be == 20
     
     roll = Category.new(3, 3, 3, 1, 1)
     expect(roll.three_of_a_kind?).to be true
-    #expect(roll.score).to be == 11
     
     roll = Category.new(1, 2, 3, 4, 5)
     expect(roll.three_of_a_kind?).to be false
-    #expect(roll.score).to be == 0
+  end
+  
+  it "scores three of a kind" do 
+    roll = Category.new(6, 6, 6, 1, 1)
+    expect(roll.score_of_three_of_a_kind!).to be == 20
+    
+    roll = Category.new(3, 3, 3, 1, 1)
+    expect(roll.score_of_three_of_a_kind!).to be == 11
+    
+    roll = Category.new(1, 2, 3, 4, 5)
+    expect(roll.score_of_three_of_a_kind!).to be nil
   end
   
   it "is four of a kind" do 

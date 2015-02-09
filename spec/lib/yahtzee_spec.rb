@@ -3,6 +3,8 @@ require "yahtzee"
 
 describe Category do
 
+  # aces tests
+
   it "is aces" do 
     roll = Category.new(1, 1, 1, 1, 1)
     expect(roll.aces?).to be true
@@ -24,6 +26,8 @@ describe Category do
     roll = Category.new(2, 2, 2, 4, 4)
     expect(roll.score_of_aces!).to be == 0
   end
+  
+  # twos tests
   
   it "is twos" do 
     roll = Category.new(2, 2, 2, 1, 1)
@@ -47,18 +51,28 @@ describe Category do
     expect(roll.score_of_twos!).to be == 0
   end
   
+  # threes tests
+  
   it "is threes" do 
     roll = Category.new(3, 3, 3, 1, 1)
     expect(roll.threes?).to be true
-    #expect(roll.score).to be == 9
     
     roll = Category.new(3, 3, 1, 4, 4)
     expect(roll.threes?).to be true
-    #expect(roll.score).to be == 6
     
     roll = Category.new(1, 2, 1, 4, 4) 
     expect(roll.threes?).to be false
-    #expect(roll.score).to be == 0
+  end
+  
+  it "scores threes" do 
+    roll = Category.new(3, 3, 3, 1, 1)
+    expect(roll.score_of_threes!).to be == 9
+    
+    roll = Category.new(3, 3, 1, 4, 4)
+    expect(roll.score_of_threes!).to be == 6
+    
+    roll = Category.new(1, 2, 1, 4, 4) 
+    expect(roll.score_of_threes!).to be == 0
   end
   
   it "is fours" do 

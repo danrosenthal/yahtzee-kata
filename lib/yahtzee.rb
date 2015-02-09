@@ -108,6 +108,11 @@ class Category
   end
   
   def score_of_threes!
+    if threes?
+      @score = roll.count(3) * 3
+    else
+      @score = 0
+    end
   end
   
   def score_of_fours!

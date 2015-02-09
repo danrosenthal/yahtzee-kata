@@ -75,19 +75,31 @@ describe Category do
     expect(roll.score_of_threes!).to be == 0
   end
   
+  # fours tests
+  
   it "is fours" do 
     roll = Category.new(4, 4, 4, 1, 1)
     expect(roll.fours?).to be true
-    #expect(roll.score).to be == 12
     
     roll = Category.new(4, 4, 1, 2, 2)
     expect(roll.fours?).to be true
-    #expect(roll.score).to be == 8
     
     roll = Category.new(1, 2, 1, 3, 3) 
     expect(roll.fours?).to be false
-    #expect(roll.score).to be == 0
   end
+  
+  it "scores fours" do 
+    roll = Category.new(4, 4, 4, 1, 1)
+    expect(roll.score_of_fours!).to be == 12
+    
+    roll = Category.new(4, 4, 1, 2, 2)
+    expect(roll.score_of_fours!).to be == 8
+    
+    roll = Category.new(1, 2, 1, 3, 3) 
+    expect(roll.score_of_fours!).to be == 0
+  end
+  
+  # fives tests
   
   it "is fives" do 
     roll = Category.new(5, 5, 5, 1, 1)

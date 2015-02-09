@@ -37,63 +37,27 @@ class Category
   # Upper section categories
 
   def aces?
-    if roll.include?(1)
-      @score = roll.count(1) * 1
-      true
-    else
-      @score = 0
-      false
-    end
+    roll.include?(1)
   end
 
   def twos?
-    if roll.include?(2)
-      @score = roll.count(2) * 2
-      true
-    else
-      @score = 0
-      false
-    end
+    roll.include?(2)
   end
 
   def threes?
-    if roll.include?(3)
-      @score = roll.count(3) * 3
-      true
-    else
-      @score = 0
-      false
-    end
+    roll.include?(3)
   end
 
   def fours?
-    if roll.include?(4)
-      @score = roll.count(4) * 4
-      true
-    else
-      @score = 0
-      false
-    end
+    roll.include?(4)
   end
 
   def fives?
-    if roll.include?(5)
-      @score = roll.count(5) * 5
-      true
-    else
-      @score = 0
-      false
-    end
+    roll.include?(5)
   end
 
   def sixes?
-    if roll.include?(6)
-      @score = roll.count(6) * 6
-      true
-    else
-      @score = 0
-      false
-    end
+    roll.include?(6)
   end
 
   # Lower section categories

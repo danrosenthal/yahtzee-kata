@@ -177,19 +177,31 @@ describe Category do
     expect(roll.score_of_three_of_a_kind!).to be nil
   end
   
+  # four of a kind tests
+  
   it "is four of a kind" do 
     roll = Category.new(6, 6, 6, 6, 1)
     expect(roll.four_of_a_kind?).to be true
-    #expect(roll.score).to be == 25
     
     roll = Category.new(3, 3, 3, 3, 1)
     expect(roll.four_of_a_kind?).to be true
-    #expect(roll.score).to be == 13
     
     roll = Category.new(1, 2, 3, 4, 5)
     expect(roll.four_of_a_kind?).to be false
-    #expect(roll.score).to be == 0
   end
+  
+  it "scores four of a kind" do 
+    roll = Category.new(6, 6, 6, 6, 1)
+    expect(roll.score_of_four_of_a_kind!).to be == 25
+    
+    roll = Category.new(3, 3, 3, 3, 1)
+    expect(roll.score_of_four_of_a_kind!).to be == 13
+    
+    roll = Category.new(1, 2, 3, 4, 5)
+    expect(roll.score_of_four_of_a_kind!).to be nil
+  end
+  
+  # full house tests
   
   it "is a full house" do 
     roll = Category.new(6, 6, 6, 4, 4)

@@ -61,7 +61,7 @@ class Category
   end
 
   def full_house?
-    ((roll[0] == roll[1] && roll[1] == roll[2]) && (roll[3] == roll[4])) || ((roll[0] == roll[1]) && (roll[2] == roll[3] && roll[3] == roll[4]))
+    ((roll[0] == roll[2]) && (roll[3] == roll[4])) || ((roll[0] == roll[1]) && (roll[2] == roll[4]))
   end
 
   def small_straight?
@@ -106,6 +106,10 @@ class Category
   
   def score_of_three_of_a_kind!
     @score = add_them_up if three_of_a_kind?
+  end
+  
+  def score_of_four_of_a_kind!
+    @score = add_them_up if four_of_a_kind?
   end
   
   private

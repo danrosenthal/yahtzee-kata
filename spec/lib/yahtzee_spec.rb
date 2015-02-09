@@ -24,7 +24,7 @@ describe Category do
     expect(roll.score_of_aces!).to be == 3
     
     roll = Category.new(2, 2, 2, 4, 4)
-    expect(roll.score_of_aces!).to be == 0
+    expect(roll.score_of_aces!).to be nil
   end
   
   # twos tests
@@ -48,7 +48,7 @@ describe Category do
     expect(roll.score_of_twos!).to be == 4
     
     roll = Category.new(1, 3, 1, 4, 4) 
-    expect(roll.score_of_twos!).to be == 0
+    expect(roll.score_of_twos!).to be nil
   end
   
   # threes tests
@@ -72,7 +72,7 @@ describe Category do
     expect(roll.score_of_threes!).to be == 6
     
     roll = Category.new(1, 2, 1, 4, 4) 
-    expect(roll.score_of_threes!).to be == 0
+    expect(roll.score_of_threes!).to be nil
   end
   
   # fours tests
@@ -96,7 +96,7 @@ describe Category do
     expect(roll.score_of_fours!).to be == 8
     
     roll = Category.new(1, 2, 1, 3, 3) 
-    expect(roll.score_of_fours!).to be == 0
+    expect(roll.score_of_fours!).to be nil
   end
   
   # fives tests
@@ -112,8 +112,21 @@ describe Category do
     
     roll = Category.new(1, 2, 1, 3, 3) 
     expect(roll.fives?).to be false
-    #expect(roll.score).to be == 0
+    #expect(roll.score).to be == nil
   end
+  
+  it "scores fives" do 
+    roll = Category.new(5, 5, 5, 1, 1)
+    expect(roll.score_of_fives!).to be == 15
+    
+    roll = Category.new(5, 5, 1, 2, 2)
+    expect(roll.score_of_fives!).to be == 10
+    
+    roll = Category.new(1, 2, 1, 3, 3)
+    expect(roll.score_of_fives!).to be == nil
+  end
+  
+  # sixes tests
   
   it "is sixes" do 
     roll = Category.new(6, 6, 6, 1, 1)
@@ -127,6 +140,17 @@ describe Category do
     roll = Category.new(1, 2, 1, 3, 3) 
     expect(roll.sixes?).to be false
     #expect(roll.score).to be == 0
+  end
+  
+  it "scores sixes" do 
+    roll = Category.new(6, 6, 6, 1, 1)
+    expect(roll.score_of_sixes!).to be == 18
+    
+    roll = Category.new(6, 6, 1, 2, 2)
+    expect(roll.score_of_sixes!).to be == 12
+    
+    roll = Category.new(1, 2, 1, 3, 3)
+    expect(roll.score_of_sixes!).to be nil
   end
   
   it "is three of a kind" do 

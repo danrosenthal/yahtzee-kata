@@ -64,25 +64,18 @@ class Category
 
   def three_of_a_kind?
     if roll.count(1) >= 3
-      @score = add_them_up
       true
     elsif roll.count(2) >= 3
-      @score = add_them_up
       true
     elsif roll.count(3) >= 3
-      @score = add_them_up
       true
     elsif roll.count(4) >= 3
-      @score = add_them_up
       true
     elsif roll.count(5) >= 3
-      @score = add_them_up
       true
     elsif roll.count(6) >= 3
-      @score = add_them_up
       true
     else
-      @score = 0
       false
     end
   end

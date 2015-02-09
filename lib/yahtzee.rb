@@ -82,37 +82,24 @@ class Category
 
   def four_of_a_kind?
     if roll.count(1) >= 4
-      @score = add_them_up
       true
     elsif roll.count(2) >= 4
-      @score = add_them_up
       true
     elsif roll.count(3) >= 4
-      @score = add_them_up
       true
     elsif roll.count(4) >= 4
-      @score = add_them_up
       true
     elsif roll.count(5) >= 4
-      @score = add_them_up
       true
     elsif roll.count(6) >= 4
-      @score = add_them_up
       true
     else
-      @score = 0
       false
     end
   end
 
   def full_house?
-    if ((d1 == d2 && d2 == d3) && (d4 == d5)) || ((d1 == d2) && (d3 == d4 && d4 == d5))
-      @score = 25
-      true
-    else
-      @score = 0
-      false
-    end
+    ((d1 == d2 && d2 == d3) && (d4 == d5)) || ((d1 == d2) && (d3 == d4 && d4 == d5))
   end
 
   def small_straight?

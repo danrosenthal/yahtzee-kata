@@ -114,6 +114,29 @@ class Category
   def to_s
   end
   
+  def score_of_aces!
+    if aces?
+      @score = roll.count(1) * 1
+    else
+      @score = 0
+    end
+  end
+  
+  def score_of_twos!
+  end
+  
+  def score_of_threes!
+  end
+  
+  def score_of_fours!
+  end
+  
+  def score_of_fives!
+  end
+  
+  def score_of_sixes!
+  end
+  
   private
   
   def add_them_up

@@ -284,4 +284,28 @@ describe Category do
     roll = Category.new(1, 2, 3, 4, 4)
     expect(roll.score_large_straight!).to be == 0
   end
+  
+  # yahtzee tests
+  
+  it "is a yahtzee" do 
+    roll = Category.new(1, 1, 1, 1, 1)
+    expect(roll.yahtzee?).to be true
+    
+    roll = Category.new(2, 2, 2, 2, 2)
+    expect(roll.yahtzee?).to be true
+    
+    roll = Category.new(1, 2, 3, 4, 4)
+    expect(roll.yahtzee?).to be false
+  end
+  
+  it "scores a yahtzee" do 
+    roll = Category.new(1, 1, 1, 1, 1)
+    expect(roll.score_yahtzee!).to be == 50
+    
+    roll = Category.new(2, 2, 2, 2, 2)
+    expect(roll.score_yahtzee!).to be == 50
+    
+    roll = Category.new(1, 2, 3, 4, 4)
+    expect(roll.score_yahtzee!).to be == 0
+  end
 end

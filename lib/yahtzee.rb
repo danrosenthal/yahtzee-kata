@@ -1,16 +1,16 @@
 class Category
-
   attr_accessor :roll
   def initialize(*args)
-    if args.length >= 5
+    if args.length == 5
       @roll = args.sort
+    elsif args.length > 5
+      raise YahtzeeError, "You need to roll #{args.length - 5} fewer dice."
     else
       raise YahtzeeError, "You need to roll #{5 - args.length} more dice."
     end
   end
 
   # category methods
-
   def aces?; roll.include?(1); end
   def twos?; roll.include?(2); end
   def threes?; roll.include?(3); end
@@ -25,7 +25,6 @@ class Category
   def yahtzee?; roll.min == roll.max; end
   
   # scoring methods
-  
   def score_aces!; aces? ? count_em_up(1) : 0; end
   def score_twos!; twos? ? count_em_up(2) : 0; end
   def score_threes!; threes? ? count_em_up(3) : 0; end
@@ -43,11 +42,9 @@ class Category
   
   def add_em_up; roll.reduce(:+); end 
   def count_em_up(num); roll.count(num) * num; end
-
   def look_for_sets_of(amt)
     (1..6).any? { |dots| roll.count(dots) >= amt }
   end
-  
 end
 
 class YahtzeeError < StandardError

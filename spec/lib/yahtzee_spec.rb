@@ -18,13 +18,13 @@ describe Category do
   
   it "scores aces" do
     roll = Category.new(1, 1, 1, 1, 1)
-    expect(roll.score_of_aces!).to be == 5
+    expect(roll.score_aces!).to be == 5
     
     roll = Category.new(1, 1, 1, 4, 4)
-    expect(roll.score_of_aces!).to be == 3
+    expect(roll.score_aces!).to be == 3
     
     roll = Category.new(2, 2, 2, 4, 4)
-    expect(roll.score_of_aces!).to be nil
+    expect(roll.score_aces!).to be == 0
   end
   
   # twos tests
@@ -42,13 +42,13 @@ describe Category do
   
   it "scores twos" do
     roll = Category.new(2, 2, 2, 1, 1)
-    expect(roll.score_of_twos!).to be == 6
+    expect(roll.score_twos!).to be == 6
     
     roll = Category.new(2, 2, 1, 4, 4)
-    expect(roll.score_of_twos!).to be == 4
+    expect(roll.score_twos!).to be == 4
     
     roll = Category.new(1, 3, 1, 4, 4) 
-    expect(roll.score_of_twos!).to be nil
+    expect(roll.score_twos!).to be == 0
   end
   
   # threes tests
@@ -66,13 +66,13 @@ describe Category do
   
   it "scores threes" do 
     roll = Category.new(3, 3, 3, 1, 1)
-    expect(roll.score_of_threes!).to be == 9
+    expect(roll.score_threes!).to be == 9
     
     roll = Category.new(3, 3, 1, 4, 4)
-    expect(roll.score_of_threes!).to be == 6
+    expect(roll.score_threes!).to be == 6
     
     roll = Category.new(1, 2, 1, 4, 4) 
-    expect(roll.score_of_threes!).to be nil
+    expect(roll.score_threes!).to be == 0
   end
   
   # fours tests
@@ -90,13 +90,13 @@ describe Category do
   
   it "scores fours" do 
     roll = Category.new(4, 4, 4, 1, 1)
-    expect(roll.score_of_fours!).to be == 12
+    expect(roll.score_fours!).to be == 12
     
     roll = Category.new(4, 4, 1, 2, 2)
-    expect(roll.score_of_fours!).to be == 8
+    expect(roll.score_fours!).to be == 8
     
     roll = Category.new(1, 2, 1, 3, 3) 
-    expect(roll.score_of_fours!).to be nil
+    expect(roll.score_fours!).to be == 0
   end
   
   # fives tests
@@ -112,18 +112,18 @@ describe Category do
     
     roll = Category.new(1, 2, 1, 3, 3) 
     expect(roll.fives?).to be false
-    #expect(roll.score).to be == nil
+    #expect(roll.score).to be == 0
   end
   
   it "scores fives" do 
     roll = Category.new(5, 5, 5, 1, 1)
-    expect(roll.score_of_fives!).to be == 15
+    expect(roll.score_fives!).to be == 15
     
     roll = Category.new(5, 5, 1, 2, 2)
-    expect(roll.score_of_fives!).to be == 10
+    expect(roll.score_fives!).to be == 10
     
     roll = Category.new(1, 2, 1, 3, 3)
-    expect(roll.score_of_fives!).to be == nil
+    expect(roll.score_fives!).to be == 0
   end
   
   # sixes tests
@@ -144,13 +144,13 @@ describe Category do
   
   it "scores sixes" do 
     roll = Category.new(6, 6, 6, 1, 1)
-    expect(roll.score_of_sixes!).to be == 18
+    expect(roll.score_sixes!).to be == 18
     
     roll = Category.new(6, 6, 1, 2, 2)
-    expect(roll.score_of_sixes!).to be == 12
+    expect(roll.score_sixes!).to be == 12
     
     roll = Category.new(1, 2, 1, 3, 3)
-    expect(roll.score_of_sixes!).to be nil
+    expect(roll.score_sixes!).to be == 0
   end
   
   # three of a kind tests
@@ -168,13 +168,13 @@ describe Category do
   
   it "scores three of a kind" do 
     roll = Category.new(6, 6, 6, 1, 1)
-    expect(roll.score_of_three_of_a_kind!).to be == 20
+    expect(roll.score_three_of_a_kind!).to be == 20
     
     roll = Category.new(3, 3, 3, 1, 1)
-    expect(roll.score_of_three_of_a_kind!).to be == 11
+    expect(roll.score_three_of_a_kind!).to be == 11
     
     roll = Category.new(1, 2, 3, 4, 5)
-    expect(roll.score_of_three_of_a_kind!).to be nil
+    expect(roll.score_three_of_a_kind!).to be == 0
   end
   
   # four of a kind tests
@@ -192,13 +192,13 @@ describe Category do
   
   it "scores four of a kind" do 
     roll = Category.new(6, 6, 6, 6, 1)
-    expect(roll.score_of_four_of_a_kind!).to be == 25
+    expect(roll.score_four_of_a_kind!).to be == 25
     
     roll = Category.new(3, 3, 3, 3, 1)
-    expect(roll.score_of_four_of_a_kind!).to be == 13
+    expect(roll.score_four_of_a_kind!).to be == 13
     
     roll = Category.new(1, 2, 3, 4, 5)
-    expect(roll.score_of_four_of_a_kind!).to be nil
+    expect(roll.score_four_of_a_kind!).to be == 0
   end
   
   # full house tests
@@ -206,18 +206,82 @@ describe Category do
   it "is a full house" do 
     roll = Category.new(6, 6, 6, 4, 4)
     expect(roll.full_house?).to be true
-    #expect(roll.score).to be == 25
     
     roll = Category.new(3, 3, 2, 2, 2)
     expect(roll.full_house?).to be true
-    #expect(roll.score).to be == 25
     
     roll = Category.new(1, 1, 1, 1, 1)
     expect(roll.full_house?).to be true
-    #expect(roll.score).to be == 25
     
     roll = Category.new(1, 2, 3, 4, 5)
     expect(roll.full_house?).to be false
-    #expect(roll.score).to be == 0
+  end
+  
+  it "scores a full house" do 
+    roll = Category.new(6, 6, 6, 4, 4)
+    expect(roll.score_full_house!).to be == 25
+    
+    roll = Category.new(3, 3, 2, 2, 2)
+    expect(roll.score_full_house!).to be == 25
+    
+    roll = Category.new(1, 1, 1, 1, 1)
+    expect(roll.score_full_house!).to be == 25
+    
+    roll = Category.new(1, 2, 3, 4, 5)
+    expect(roll.score_full_house!).to be == 0
+  end
+  
+  # small straight tests
+  
+  it "is a small straight" do 
+    roll = Category.new(1, 2, 3, 4, 6)
+    expect(roll.small_straight?).to be true
+    
+    roll = Category.new(2, 3, 4, 5, 5)
+    expect(roll.small_straight?).to be true
+    
+    roll = Category.new(3, 4, 5, 6, 6)
+    expect(roll.small_straight?).to be true
+    
+    roll = Category.new(1, 2, 3, 5, 5)
+    expect(roll.small_straight?).to be false
+  end
+  
+  it "scores a small straight" do 
+    roll = Category.new(1, 2, 3, 4, 6)
+    expect(roll.score_small_straight!).to be == 30
+    
+    roll = Category.new(2, 3, 4, 5, 5)
+    expect(roll.score_small_straight!).to be == 30
+    
+    roll = Category.new(3, 4, 5, 6, 6)
+    expect(roll.score_small_straight!).to be == 30
+    
+    roll = Category.new(1, 2, 3, 5, 5)
+    expect(roll.score_small_straight!).to be == 0
+  end
+  
+  # large straight tests
+  
+  it "is a large straight" do 
+    roll = Category.new(1, 2, 3, 4, 5)
+    expect(roll.large_straight?).to be true
+    
+    roll = Category.new(2, 3, 4, 5, 6)
+    expect(roll.large_straight?).to be true
+    
+    roll = Category.new(1, 2, 3, 4, 4)
+    expect(roll.large_straight?).to be false
+  end
+  
+  it "scores a large straight" do 
+    roll = Category.new(1, 2, 3, 4, 5)
+    expect(roll.score_large_straight!).to be == 40
+    
+    roll = Category.new(2, 3, 4, 5, 6)
+    expect(roll.score_large_straight!).to be == 40
+    
+    roll = Category.new(1, 2, 3, 4, 4)
+    expect(roll.score_large_straight!).to be == 0
   end
 end

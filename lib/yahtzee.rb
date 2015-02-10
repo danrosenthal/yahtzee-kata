@@ -1,123 +1,83 @@
 class Category
 
-  attr_accessor :roll, :score
-  def initialize(d1, d2, d3, d4, d5)
-    @roll = [d1, d2, d3, d4, d5].sort
-    @score = 0
+  attr_accessor :roll
+  def initialize(*args)
+    @roll = args.sort
   end
 
   # Upper section categories
 
   def aces?; roll.include?(1); end
-
   def twos?; roll.include?(2); end
-
   def threes?; roll.include?(3); end
-
   def fours?; roll.include?(4); end
-
   def fives?; roll.include?(5); end
-
   def sixes?; roll.include?(6); end
 
   # Lower section categories
 
-  def three_of_a_kind?
-    amt = 3
-    if call_the_roll(1, amt)
-      true
-    elsif call_the_roll(2, amt)
-      true
-    elsif call_the_roll(3, amt)
-      true
-    elsif call_the_roll(4, amt)
-      true
-    elsif call_the_roll(5, amt)
-      true
-    elsif call_the_roll(6, amt)
-      true
-    else
-      false
-    end
-  end
-
-  def four_of_a_kind?
-    amt = 4
-    if call_the_roll(1, amt)
-      true
-    elsif call_the_roll(2, amt)
-      true
-    elsif call_the_roll(3, amt)
-      true
-    elsif call_the_roll(4, amt)
-      true
-    elsif call_the_roll(5, amt)
-      true
-    elsif call_the_roll(6, amt)
-      true
-    else
-      false
-    end
-  end
+  def three_of_a_kind?; call_the_roll(3); end
+  def four_of_a_kind?; call_the_roll(4); end
 
   def full_house?
-    ((roll[0] == roll[2]) && (roll[3] == roll[4])) || ((roll[0] == roll[1]) && (roll[2] == roll[4]))
+    roll.uniq.length <= 2 && (roll[0] == roll[1]) && (roll[-1] == roll[-2])
   end
 
   def small_straight?
+    roll[0..3] == [1, 2, 3, 4] || roll[0..3] == [2, 3, 4, 5] || roll[1..4] == [3, 4, 5, 6] || roll[0..3] == [3, 4, 5, 6]
   end
 
   def large_straight?
+    roll == [1, 2, 3, 4, 5] || roll == [2, 3, 4, 5, 6]
   end
 
   def yahtzee?
+    roll.min == roll.max
   end
   
   def to_s
   end
   
-  # upper section scoring methods
+  # Upper section scoring methods
   
-  def score_of_aces!
-    @score = count_em_up(1) if aces?
-  end
+  def score_aces!; aces? ? count_em_up(1) : 0; end
+  def score_twos!; twos? ? count_em_up(2) : 0; end
+  def score_threes!; threes? ? count_em_up(3) : 0; end
+  def score_fours!; fours? ? count_em_up(4) : 0; end
+  def score_fives!; fives? ? count_em_up(5) : 0; end
+  def score_sixes!; sixes? ? count_em_up(6) : 0; end
   
-  def score_of_twos!
-    @score = count_em_up(2) if twos?
-  end
+  # Lower section scoring methods
   
-  def score_of_threes!
-    @score = count_em_up(3) if threes?
-  end
-  
-  def score_of_fours!
-    @score = count_em_up(4) if fours?
-  end
-  
-  def score_of_fives!
-    @score = count_em_up(5) if fives?
-  end
-  
-  def score_of_sixes!
-    @score = count_em_up(6) if sixes?
-  end
-  
-  # lower section scoring methods
-  
-  def score_of_three_of_a_kind!
-    @score = add_them_up if three_of_a_kind?
-  end
-  
-  def score_of_four_of_a_kind!
-    @score = add_them_up if four_of_a_kind?
-  end
+  def score_three_of_a_kind!; three_of_a_kind? ? add_em_up : 0; end
+  def score_four_of_a_kind!; four_of_a_kind? ? add_em_up : 0; end
+  def score_full_house!; full_house? ? 25 : 0; end
+  def score_small_straight!; small_straight? ? 30 : 0 end
+  def score_large_straight!; large_straight? ? 40 : 0; end
+  def score_yahtzee!; yahtzee? ? 50 : 0; end
   
   private
   
-  def add_them_up; roll.reduce(:+); end
+  def add_em_up; roll.reduce(:+); end
   
   def count_em_up(num); roll.count(num) * num; end
   
-  def call_the_roll(num, amt); roll.count(num) >= amt; end
+  def call_the_roll(amt)
+    if roll.count(1) >= amt
+      true
+    elsif roll.count(2) >= amt
+      true
+    elsif roll.count(3) >= amt
+      true
+    elsif roll.count(4) >= amt
+      true
+    elsif roll.count(5) >= amt
+      true
+    elsif roll.count(6) >= amt
+      true
+    else
+      false
+    end
+  end
   
 end

@@ -26,4 +26,12 @@ describe Score do
       expect(roll.roll_score[:fours]).to eq(8)
     end
   end
+  
+  context "when a roll has 3 fives and 2 sixes" do
+    roll = Score.new(5,5,5,6,6)
+    
+    it "adds up all the fives for :fives" do
+      expect(roll.roll_score[:fives]).to eq(15)
+    end
+  end
 end

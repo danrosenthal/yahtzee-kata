@@ -13,6 +13,10 @@ describe Score do
       expect(roll.roll_score[:twos]).to eq(4)
     end
     
+    it "adds up the dice for :three_kind" do
+      expect(roll.roll_score[:three_kind]).to eq(7)
+    end
+    
   end
   
   context "when a roll has 3 threes and 2 fours" do
@@ -25,6 +29,10 @@ describe Score do
     it "adds up all the fours for :fours" do
       expect(roll.roll_score[:fours]).to eq(8)
     end
+    
+    it "adds up the threes for :three_kind" do
+      expect(roll.roll_score[:three_kind]).to eq(17)
+    end
   end
   
   context "when a roll has 3 fives and 2 sixes" do
@@ -36,6 +44,10 @@ describe Score do
     
     it "adds up all the sixes for :sixes" do
       expect(roll.roll_score[:sixes]).to eq(12)
+    end
+    
+    it "adds up the fives for :three_kind" do
+      expect(roll.roll_score[:three_kind]).to eq(27)
     end
   end
 end

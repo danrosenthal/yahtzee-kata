@@ -24,7 +24,7 @@ class Score
     threes(roll)
     fours(roll)
     fives(roll)
-    #sixes(roll)
+    sixes(roll)
     #three_kind(roll)
     #four_kind(roll)
     #full_house(roll)
@@ -71,6 +71,14 @@ class Score
       roll_score[:fives] = (roll.count(5) * 5)
     else
       roll_score[:fives] = 0
+    end
+  end
+  
+  def sixes(roll)
+    if roll.include?(6)
+      roll_score[:sixes] = (roll.count(6) * 6)
+    else
+      roll_score[:sixes] = 0
     end
   end
 end

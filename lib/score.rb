@@ -35,59 +35,31 @@ class Score
   end
   
   def aces(roll)
-    if roll.include?(1)
-      roll_score[:aces] = (roll.count(1) * 1)
-    else
-      roll_score[:aces] = 0
-    end
+    roll_score[:aces] = (roll.count(1) * 1) if roll.include?(1)
   end
   
   def twos(roll)
-    if roll.include?(2)
-      roll_score[:twos] = (roll.count(2) * 2)
-    else
-      roll_score[:twos] = 0
-    end
+    roll_score[:twos] = (roll.count(2) * 2) if roll.include?(2)
   end
   
   def threes(roll)
-    if roll.include?(3)
-      roll_score[:threes] = (roll.count(3) * 3)
-    else
-      roll_score[:threes] = 0
-    end
+    roll_score[:threes] = (roll.count(3) * 3) if roll.include?(3)
   end
   
   def fours(roll)
-    if roll.include?(4)
-      roll_score[:fours] = (roll.count(4) * 4)
-    else
-      roll_score[:fours] = 0
-    end
+    roll_score[:fours] = (roll.count(4) * 4) if roll.include?(4)
   end
   
   def fives(roll)
-    if roll.include?(5)
-      roll_score[:fives] = (roll.count(5) * 5)
-    else
-      roll_score[:fives] = 0
-    end
+    roll_score[:fives] = (roll.count(5) * 5) if roll.include?(5)
   end
   
   def sixes(roll)
-    if roll.include?(6)
-      roll_score[:sixes] = (roll.count(6) * 6)
-    else
-      roll_score[:sixes] = 0
-    end
+    roll_score[:sixes] = (roll.count(6) * 6) if roll.include?(6)
   end
   
   def three_kind(roll)
-    if (1..6).any? { |pips| roll.count(pips) >= 3 }
-      roll_score[:three_kind] = roll.reduce(&:+)
-    else
-      roll_score[:three_kind] = 0
-    end
+    roll_score[:three_kind] = roll.reduce(&:+) if (1..6).any? { |pips| roll.count(pips) >= 3 }
   end
 end
 

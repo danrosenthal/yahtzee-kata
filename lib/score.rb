@@ -21,7 +21,7 @@ class Score
     }
     aces(roll)
     twos(roll)
-    #threes(roll)
+    threes(roll)
     #fours(roll)
     #fives(roll)
     #sixes(roll)
@@ -42,12 +42,19 @@ class Score
     end
   end
   
-  
   def twos(roll)
     if roll.include?(2)
       roll_score[:twos] = (roll.count(2) * 2)
     else
       roll_score[:twos] = 0
+    end
+  end
+  
+  def threes(roll)
+    if roll.include?(3)
+      roll_score[:threes] = (roll.count(3) * 3)
+    else
+      roll_score[:threes] = 0
     end
   end
 end

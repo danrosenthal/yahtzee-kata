@@ -23,7 +23,7 @@ class Score
     twos(roll)
     threes(roll)
     fours(roll)
-    #fives(roll)
+    fives(roll)
     #sixes(roll)
     #three_kind(roll)
     #four_kind(roll)
@@ -63,6 +63,14 @@ class Score
       roll_score[:fours] = (roll.count(4) * 4)
     else
       roll_score[:fours] = 0
+    end
+  end
+  
+  def fives(roll)
+    if roll.include?(5)
+      roll_score[:fives] = (roll.count(5) * 5)
+    else
+      roll_score[:fives] = 0
     end
   end
 end

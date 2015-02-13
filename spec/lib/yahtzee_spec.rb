@@ -33,5 +33,9 @@ describe Score do
     it "adds up all the fives for :fives" do
       expect(roll.roll_score[:fives]).to eq(15)
     end
+    
+    it "adds up all the sixes for :sixes" do
+      expect(roll.roll_score[:sixes]).to eq(12)
+    end
   end
 end

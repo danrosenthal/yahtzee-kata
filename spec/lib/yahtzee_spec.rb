@@ -14,4 +14,12 @@ describe Score do
     end
     
   end
+  
+  context "when a roll has 3 threes and 2 fours" do
+    roll = Score.new(3,3,3,4,4)
+    
+    it "adds up all the threes for :threes" do
+      expect(roll.roll_score[:threes]).to eq(9)
+    end
+  end
 end

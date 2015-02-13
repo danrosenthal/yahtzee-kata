@@ -20,7 +20,7 @@ class Score
       :chance => 0
     }
     aces(roll)
-    #twos(roll)
+    twos(roll)
     #threes(roll)
     #fours(roll)
     #fives(roll)
@@ -41,5 +41,13 @@ class Score
       roll_score[:aces] = 0
     end
   end
-
+  
+  
+  def twos(roll)
+    if roll.include?(2)
+      roll_score[:twos] = (roll.count(2) * 2)
+    else
+      roll_score[:twos] = 0
+    end
+  end
 end

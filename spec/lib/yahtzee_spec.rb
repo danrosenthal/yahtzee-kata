@@ -77,4 +77,14 @@ describe Score do
       expect(roll.roll_score[:sixes]).to eq(6)
     end
   end
+  
+  context "when a roll is a straight" do
+    roll = Score.new(1,2,3,4,5)
+    it "scores 30 for :sm_straight" do
+      expect(roll.roll_score[:sm_straight]).to eq(30)
+    end
+    it "scores 40 for :lg_straight" do
+      expect(roll.roll_score[:lg_straight]).to eq(40)
+    end
+  end
 end

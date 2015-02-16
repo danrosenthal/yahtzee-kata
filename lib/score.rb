@@ -30,7 +30,7 @@ class Score
     full_house(roll)
     sm_straight(roll)
     lg_straight(roll)
-    #yahtzee(roll)
+    yahtzee(roll)
     #chance(roll)
   end
   
@@ -76,6 +76,10 @@ class Score
   
   def lg_straight(roll)
     roll_score[:lg_straight] = 40 if roll == [1, 2, 3, 4, 5] || roll == [2, 3, 4, 5, 6]
+  end
+  
+  def yahtzee(roll)
+    roll_score[:yahtzee] = 50 if roll.uniq.length == 1
   end
 end
 

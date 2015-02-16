@@ -87,4 +87,21 @@ describe Score do
       expect(roll.roll_score[:lg_straight]).to eq(40)
     end
   end
+  
+  context "when a roll is all the same dice" do
+    roll = Score.new(6,6,6,6,6)
+    it "scores 50 for :yahtzee" do
+      expect(roll.roll_score[:yahtzee]).to eq(50)
+    end
+    it "scores 30 for :sixes" do
+      expect(roll.roll_score[:sixes]).to eq(30)
+    end
+    it "scores 30 for :three_kind" do
+      expect(roll.roll_score[:three_kind]).to eq(30)
+    end
+    it "scores 30 for :four_kind" do
+      expect(roll.roll_score[:four_kind]).to eq(30)
+    end
+  end
+  
 end

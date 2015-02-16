@@ -2,8 +2,8 @@ class Score
   
   attr_accessor :roll_score
   
-  def initialize(*args)
-    roll = args.sort
+  def initialize(roll)
+    roll = roll.sort
     @roll_score = {
       :aces => 0,
       :twos => 0,

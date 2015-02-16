@@ -20,6 +20,10 @@ describe Score do
     it "scores 25 for :full_house" do
       expect(roll.roll_score[:full_house]).to eq(25)
     end
+    
+    it "scores 7 for :chance" do
+      expect(roll.roll_score[:chance]).to eq(7)
+    end
   end
   
   context "when a roll has 3 threes and 2 fours" do
@@ -39,6 +43,10 @@ describe Score do
     
     it "scores 25 for :full_house" do
       expect(roll.roll_score[:full_house]).to eq(25)
+    end
+    
+    it "scores 17 for :chance" do
+      expect(roll.roll_score[:chance]).to eq(17)
     end
   end
   
@@ -60,6 +68,10 @@ describe Score do
     it "scores 25 for :full_house" do
       expect(roll.roll_score[:full_house]).to eq(25)
     end
+    
+    it "scores 27 for :chance" do
+      expect(roll.roll_score[:chance]).to eq(27)
+    end
   end
   
   context "when a roll has 4 fives and 1 six" do
@@ -76,6 +88,10 @@ describe Score do
     it "adds up all the sixes for :sixes" do
       expect(roll.roll_score[:sixes]).to eq(6)
     end
+    
+    it "scores 26 for :chance" do
+      expect(roll.roll_score[:chance]).to eq(26)
+    end
   end
   
   context "when a roll is a straight" do
@@ -83,8 +99,13 @@ describe Score do
     it "scores 30 for :sm_straight" do
       expect(roll.roll_score[:sm_straight]).to eq(30)
     end
+    
     it "scores 40 for :lg_straight" do
       expect(roll.roll_score[:lg_straight]).to eq(40)
+    end
+    
+    it "scores 15 for :chance" do
+      expect(roll.roll_score[:chance]).to eq(15)
     end
   end
   
@@ -93,14 +114,21 @@ describe Score do
     it "scores 50 for :yahtzee" do
       expect(roll.roll_score[:yahtzee]).to eq(50)
     end
+    
     it "scores 30 for :sixes" do
       expect(roll.roll_score[:sixes]).to eq(30)
     end
+    
     it "scores 30 for :three_kind" do
       expect(roll.roll_score[:three_kind]).to eq(30)
     end
+    
     it "scores 30 for :four_kind" do
       expect(roll.roll_score[:four_kind]).to eq(30)
+    end
+    
+    it "scores 30 for :chance" do
+      expect(roll.roll_score[:chance]).to eq(30)
     end
   end
   

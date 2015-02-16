@@ -67,7 +67,7 @@ class Score
   end
   
   def full_house(roll)
-    roll_score[:full_house] = 25 if roll.uniq.length == 2 && roll[0] == roll[1] && roll[-2] == roll[-1]
+    roll_score[:full_house] = 25 if roll.uniq.length <= 2 && roll[0] == roll[1] && roll[-2] == roll[-1]
   end
   
   def sm_straight(roll)
@@ -86,4 +86,3 @@ class Score
     roll_score[:chance] = roll.reduce(&:+)
   end
 end
-

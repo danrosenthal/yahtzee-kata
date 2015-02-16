@@ -17,6 +17,9 @@ describe Score do
       expect(roll.roll_score[:three_kind]).to eq(7)
     end
     
+    it "scores 25 for :full_house" do
+      expect(roll.roll_score[:full_house]).to eq(25)
+    end
   end
   
   context "when a roll has 3 threes and 2 fours" do
@@ -32,6 +35,10 @@ describe Score do
     
     it "adds up the threes for :three_kind" do
       expect(roll.roll_score[:three_kind]).to eq(17)
+    end
+    
+    it "scores 25 for :full_house" do
+      expect(roll.roll_score[:full_house]).to eq(25)
     end
   end
   
@@ -49,13 +56,25 @@ describe Score do
     it "adds up the dice for :three_kind" do
       expect(roll.roll_score[:three_kind]).to eq(27)
     end
+    
+    it "scores 25 for :full_house" do
+      expect(roll.roll_score[:full_house]).to eq(25)
+    end
   end
   
-  context "when a roll has 3 fives and 2 sixes" do
+  context "when a roll has 4 fives and 1 six" do
     roll = Score.new(5,5,5,5,6)
     
     it "adds up all the dice for :four-kind" do
       expect(roll.roll_score[:four_kind]).to eq(26)
+    end
+    
+    it "adds up all the fives for :fives" do
+      expect(roll.roll_score[:fives]).to eq(20)
+    end
+    
+    it "adds up all the sixes for :sixes" do
+      expect(roll.roll_score[:sixes]).to eq(6)
     end
   end
 end

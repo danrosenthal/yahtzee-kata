@@ -26,7 +26,7 @@ class Score
     fives(roll)
     sixes(roll)
     three_kind(roll)
-    #four_kind(roll)
+    four_kind(roll)
     #full_house(roll)
     #sm_straight(roll)
     #lg_straight(roll)
@@ -60,6 +60,10 @@ class Score
   
   def three_kind(roll)
     roll_score[:three_kind] = roll.reduce(&:+) if (1..6).any? { |pips| roll.count(pips) >= 3 }
+  end
+  
+  def four_kind(roll)
+    roll_score[:four_kind] = roll.reduce(&:+) if (1..6).any? { |pips| roll.count(pips) >= 4 }
   end
 end
 

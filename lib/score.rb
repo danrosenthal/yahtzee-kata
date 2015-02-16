@@ -27,7 +27,7 @@ class Score
     sixes(roll)
     three_kind(roll)
     four_kind(roll)
-    #full_house(roll)
+    full_house(roll)
     #sm_straight(roll)
     #lg_straight(roll)
     #yahtzee(roll)
@@ -64,6 +64,10 @@ class Score
   
   def four_kind(roll)
     roll_score[:four_kind] = roll.reduce(&:+) if (1..6).any? { |pips| roll.count(pips) >= 4 }
+  end
+  
+  def full_house(roll)
+    roll_score[:full_house] = 25 if roll.uniq.length == 2 && roll[0] == roll[1] && roll[-2] == roll[-1]
   end
 end
 

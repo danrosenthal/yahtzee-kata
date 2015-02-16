@@ -31,7 +31,7 @@ class Score
     sm_straight(roll)
     lg_straight(roll)
     yahtzee(roll)
-    #chance(roll)
+    chance(roll)
   end
   
   def aces(roll)
@@ -80,6 +80,10 @@ class Score
   
   def yahtzee(roll)
     roll_score[:yahtzee] = 50 if roll.uniq.length == 1
+  end
+  
+  def chance(roll)
+    roll_score[:chance] = roll.reduce(&:+)
   end
 end
 

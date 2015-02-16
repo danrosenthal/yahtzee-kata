@@ -28,7 +28,7 @@ class Score
     three_kind(roll)
     four_kind(roll)
     full_house(roll)
-    #sm_straight(roll)
+    sm_straight(roll)
     #lg_straight(roll)
     #yahtzee(roll)
     #chance(roll)
@@ -68,6 +68,10 @@ class Score
   
   def full_house(roll)
     roll_score[:full_house] = 25 if roll.uniq.length == 2 && roll[0] == roll[1] && roll[-2] == roll[-1]
+  end
+  
+  def sm_straight(roll)
+    roll_score[:sm_straight] = 30 if roll[0..3] == [1, 2, 3, 4] || roll[0..3] == [2, 3, 4, 5] || roll[1..4] == [3, 4, 5, 6] || roll[0..3] == [3, 4, 5, 6]
   end
 end
 

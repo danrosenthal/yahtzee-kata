@@ -1,7 +1,7 @@
 require "spec_helper"
-require "score"
+require "category"
 
-describe Score do
+describe Category do
   context "when a roll has 3 aces and 2 twos" do
     roll = Score.new([1,1,1,2,2])
     

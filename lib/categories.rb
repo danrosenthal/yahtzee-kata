@@ -1,9 +1,11 @@
-class Category
+require 'aces'
+
+class Categories
   
-  attr_accessor :roll_score
+  attr_reader :roll_score
   
   def initialize(roll)
-    roll = roll.sort
+    roll
     @roll_score = {
       aces: 0,
       twos: 0,
@@ -35,7 +37,7 @@ class Category
   end
   
   def aces(roll)
-    roll_score[:aces] = (roll.count(1) * 1) if roll.include?(1)
+    roll_score[:aces] = Aces.new.score(roll)
   end
   
   def twos(roll)
@@ -67,15 +69,18 @@ class Category
   end
   
   def full_house(roll)
-    roll_score[:full_house] = 25 if roll.uniq.length <= 2 && roll[0] == roll[1] && roll[-2] == roll[-1]
+    roll_sorted = roll.sort
+    roll_score[:full_house] = 25 if roll_sorted.uniq.length <= 2 && roll_sorted[0] == roll_sorted[1] && roll_sorted[-2] == roll_sorted[-1]
   end
   
   def sm_straight(roll)
-    roll_score[:sm_straight] = 30 if roll[0..3] == [1, 2, 3, 4] || roll[0..3] == [2, 3, 4, 5] || roll[1..4] == [3, 4, 5, 6] || roll[0..3] == [3, 4, 5, 6]
+    roll_sorted = roll.sort
+    roll_score[:sm_straight] = 30 if roll_sorted[0..3] == [1, 2, 3, 4] || roll_sorted[0..3] == [2, 3, 4, 5] || roll_sorted[1..4] == [3, 4, 5, 6] || roll_sorted[0..3] == [3, 4, 5, 6]
   end
   
   def lg_straight(roll)
-    roll_score[:lg_straight] = 40 if roll == [1, 2, 3, 4, 5] || roll == [2, 3, 4, 5, 6]
+    roll_sorted = roll.sort
+    roll_score[:lg_straight] = 40 if roll_sorted == [1, 2, 3, 4, 5] || roll_sorted == [2, 3, 4, 5, 6]
   end
   
   def yahtzee(roll)

@@ -4,6 +4,8 @@ require 'threes'
 require 'fours'
 require 'fives'
 require 'sixes'
+require 'three_kind'
+require 'four_kind'
 
 class Categories
   attr_reader :category_score
@@ -44,16 +46,14 @@ class Categories
   def sixes(roll)
     category_score[:sixes] = Sixes.new.score(roll)
   end
-  
-  
-  
   def three_kind(roll)
-    category_score[:three_kind] = roll.reduce(&:+) if (1..6).any? { |pips| roll.count(pips) >= 3 }
+    category_score[:three_kind] = ThreeKind.new.score(roll)
+  end
+  def four_kind(roll)
+    category_score[:four_kind] = FourKind.new.score(roll)
   end
   
-  def four_kind(roll)
-    category_score[:four_kind] = roll.reduce(&:+) if (1..6).any? { |pips| roll.count(pips) >= 4 }
-  end
+  
   
   def full_house(roll)
     roll_sorted = roll.sort

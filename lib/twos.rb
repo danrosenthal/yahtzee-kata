@@ -3,7 +3,7 @@ require 'count_score.rb'
 class Twos
   include CountScore
   
-  def pip
+  def pips
     2
   end
 end

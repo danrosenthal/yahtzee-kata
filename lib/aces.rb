@@ -3,7 +3,7 @@ require 'count_score.rb'
 class Aces
   include CountScore
   
-  def pip
+  def pips
     1
   end
 end

@@ -1,5 +1,5 @@
 module CountScore
   def score(roll)
-    roll.count(pip) * pip
+    roll.count(pips) * pips
   end
 end

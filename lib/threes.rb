@@ -1,5 +1,9 @@
+require 'count_score.rb'
+
 class Threes
-  def score(roll)
-    roll.count(3) * 3
+  include CountScore
+  
+  def pips
+    3
   end
 end

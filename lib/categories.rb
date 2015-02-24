@@ -1,4 +1,6 @@
 require 'aces'
+require 'twos'
+require 'threes'
 
 class Categories
   
@@ -41,11 +43,11 @@ class Categories
   end
   
   def twos(roll)
-    roll_score[:twos] = (roll.count(2) * 2) if roll.include?(2)
+    roll_score[:twos] = Twos.new.score(roll)
   end
   
   def threes(roll)
-    roll_score[:threes] = (roll.count(3) * 3) if roll.include?(3)
+    roll_score[:threes] = Threes.new.score(roll)
   end
   
   def fours(roll)

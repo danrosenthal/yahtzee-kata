@@ -1,17 +1,19 @@
-require 'aces'
-require 'twos'
-require 'threes'
-require 'fours'
-require 'fives'
-require 'sixes'
-require 'three_kind'
-require 'four_kind'
-require 'full_house'
-require 'sm_straight'
-require 'lg_straight'
+require './lib/aces'
+require './lib/twos'
+require './lib/threes'
+require './lib/fours'
+require './lib/fives'
+require './lib/sixes'
+require './lib/three_kind'
+require './lib/four_kind'
+require './lib/full_house'
+require './lib/sm_straight'
+require './lib/lg_straight'
+require './lib/yahtzee'
+require './lib/chance'
 
 class Categories
-  attr_reader :category_score
+  attr_reader :category_score, :highest_value
   
   def initialize(roll)
     @category_score = {}
@@ -29,6 +31,8 @@ class Categories
     lg_straight(roll)
     yahtzee(roll)
     chance(roll)
+    
+    @highest_value = highest_value(category_score)
   end
   
   def aces(roll)
@@ -71,18 +75,20 @@ class Categories
     score = SmallStraight.new.score(roll)
     category_score[:sm_straight] = score if not_zero?(score)
   end
-  
   def lg_straight(roll)
     score = LargeStraight.new.score(roll)
     category_score[:lg_straight] = score if not_zero?(score)
   end
-  
   def yahtzee(roll)
-    category_score[:yahtzee] = 50 if roll.uniq.length == 1
+    score = Yahtzee.new.score(roll)
+    category_score[:yahtzee] = score if not_zero?(score)
+  end
+  def chance(roll)
+    category_score[:chance] = Chance.new.score(roll)
   end
   
-  def chance(roll)
-    category_score[:chance] = roll.reduce(&:+)
+  def highest_value(category_score)
+    category_score.max_by { |k,v| v}
   end
   
   private

@@ -1,4 +1,4 @@
-require 'kind_score'
+require './lib/kind_score'
 
 class ThreeKind
   include KindScore

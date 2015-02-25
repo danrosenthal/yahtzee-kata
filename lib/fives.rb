@@ -1,4 +1,4 @@
-require 'count_score'
+require './lib/count_score'
 
 class Fives
   include CountScore

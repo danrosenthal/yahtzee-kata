@@ -1,4 +1,4 @@
-require 'count_score.rb'
+require './lib/count_score.rb'
 
 class Twos
   include CountScore

@@ -8,6 +8,7 @@ require 'three_kind'
 require 'four_kind'
 require 'full_house'
 require 'sm_straight'
+require 'lg_straight'
 
 class Categories
   attr_reader :category_score
@@ -72,8 +73,8 @@ class Categories
   end
   
   def lg_straight(roll)
-    roll_sorted = roll.sort
-    category_score[:lg_straight] = 40 if roll_sorted == [1, 2, 3, 4, 5] || roll_sorted == [2, 3, 4, 5, 6]
+    score = LargeStraight.new.score(roll)
+    category_score[:lg_straight] = score if not_zero?(score)
   end
   
   def yahtzee(roll)

@@ -6,6 +6,7 @@ require 'fives'
 require 'sixes'
 require 'three_kind'
 require 'four_kind'
+require 'full_house'
 
 class Categories
   attr_reader :category_score
@@ -52,12 +53,8 @@ class Categories
   def four_kind(roll)
     category_score[:four_kind] = FourKind.new.score(roll)
   end
-  
-  
-  
   def full_house(roll)
-    roll_sorted = roll.sort
-    category_score[:full_house] = 25 if roll_sorted.uniq.length <= 2 && roll_sorted[0] == roll_sorted[1] && roll_sorted[-2] == roll_sorted[-1]
+    category_score[:full_house] = FullHouse.new.score(roll)
   end
   
   def sm_straight(roll)

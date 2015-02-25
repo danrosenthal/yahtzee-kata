@@ -7,6 +7,7 @@ require 'sixes'
 require 'three_kind'
 require 'four_kind'
 require 'full_house'
+require 'sm_straight'
 
 class Categories
   attr_reader :category_score
@@ -30,36 +31,44 @@ class Categories
   end
   
   def aces(roll)
-    category_score[:aces] = Aces.new.score(roll)
+    score = Aces.new.score(roll)
+    category_score[:aces] = score if not_zero?(score)
   end
   def twos(roll)
-    category_score[:twos] = Twos.new.score(roll)
+    score = Twos.new.score(roll)
+    category_score[:twos] = score if not_zero?(score)
   end
   def threes(roll)
-    category_score[:threes] = Threes.new.score(roll)
+    score = Threes.new.score(roll)
+    category_score[:threes] = score if not_zero?(score)
   end
   def fours(roll)
-    category_score[:fours] = Fours.new.score(roll)
+    score = Fours.new.score(roll)
+    category_score[:fours] = score if not_zero?(score)
   end
   def fives(roll)
-    category_score[:fives] = Fives.new.score(roll)
+    score = Fives.new.score(roll)
+    category_score[:fives] = score if not_zero?(score)
   end
   def sixes(roll)
-    category_score[:sixes] = Sixes.new.score(roll)
+    score = Sixes.new.score(roll)
+    category_score[:sixes] = score if not_zero?(score)
   end
   def three_kind(roll)
-    category_score[:three_kind] = ThreeKind.new.score(roll)
+    score = ThreeKind.new.score(roll)
+    category_score[:three_kind] = score if not_zero?(score)
   end
   def four_kind(roll)
-    category_score[:four_kind] = FourKind.new.score(roll)
+    score = FourKind.new.score(roll)
+    category_score[:four_kind] = score if not_zero?(score)
   end
   def full_house(roll)
-    category_score[:full_house] = FullHouse.new.score(roll)
+    score = FullHouse.new.score(roll)
+    category_score[:full_house] = score if not_zero?(score)
   end
-  
   def sm_straight(roll)
-    roll_sorted = roll.sort
-    category_score[:sm_straight] = 30 if roll_sorted[0..3] == [1, 2, 3, 4] || roll_sorted[0..3] == [2, 3, 4, 5] || roll_sorted[1..4] == [3, 4, 5, 6] || roll_sorted[0..3] == [3, 4, 5, 6]
+    score = SmallStraight.new.score(roll)
+    category_score[:sm_straight] = score if not_zero?(score)
   end
   
   def lg_straight(roll)
@@ -73,5 +82,11 @@ class Categories
   
   def chance(roll)
     category_score[:chance] = roll.reduce(&:+)
+  end
+  
+  private
+  
+  def not_zero?(score)
+    score > 0
   end
 end

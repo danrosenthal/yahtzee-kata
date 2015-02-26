@@ -1,9 +1,9 @@
 require "spec_helper"
-require "categories"
+require "category_score"
 
-describe Categories do
+describe CategoryScore do
   context "when a roll has 3 aces and 2 twos" do
-    roll = Categories.new([1,1,1,2,2])
+    roll = CategoryScore.new([1,1,1,2,2])
     
     it "adds up the aces for :aces" do
       expect(roll.category_score[:aces]).to eq(3)
@@ -27,7 +27,7 @@ describe Categories do
   end
   
   context "when a roll has 3 threes and 2 fours" do
-    roll = Categories.new([3,3,3,4,4])
+    roll = CategoryScore.new([3,3,3,4,4])
     
     it "adds up all the threes for :threes" do
       expect(roll.category_score[:threes]).to eq(9)
@@ -51,7 +51,7 @@ describe Categories do
   end
   
   context "when a roll has 3 fives and 2 sixes" do
-    roll = Categories.new([5,5,5,6,6])
+    roll = CategoryScore.new([5,5,5,6,6])
     
     it "adds up all the fives for :fives" do
       expect(roll.category_score[:fives]).to eq(15)
@@ -75,7 +75,7 @@ describe Categories do
   end
   
   context "when a roll has 4 fives and 1 six" do
-    roll = Categories.new([5,5,5,5,6])
+    roll = CategoryScore.new([5,5,5,5,6])
     
     it "adds up all the dice for :four-kind" do
       expect(roll.category_score[:four_kind]).to eq(26)
@@ -95,7 +95,7 @@ describe Categories do
   end
   
   context "when a roll is a straight" do
-    roll = Categories.new([1,2,3,4,5])
+    roll = CategoryScore.new([1,2,3,4,5])
     it "scores 30 for :sm_straight" do
       expect(roll.category_score[:sm_straight]).to eq(30)
     end
@@ -110,7 +110,7 @@ describe Categories do
   end
   
   context "when a roll is all the same dice" do
-    roll = Categories.new([6,6,6,6,6])
+    roll = CategoryScore.new([6,6,6,6,6])
     it "scores 50 for :yahtzee" do
       expect(roll.category_score[:yahtzee]).to eq(50)
     end

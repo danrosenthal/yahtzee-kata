@@ -1,4 +1,4 @@
-require './lib/count_score.rb'
+require './modules/count_score'
 
 class Aces
   include CountScore

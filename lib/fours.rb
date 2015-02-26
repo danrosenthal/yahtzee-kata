@@ -1,4 +1,4 @@
-require './lib/count_score'
+require './modules/count_score'
 
 class Fours
   include CountScore

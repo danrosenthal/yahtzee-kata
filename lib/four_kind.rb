@@ -1,4 +1,4 @@
-require './lib/kind_score'
+require './modules/kind_score'
 
 class FourKind
   include KindScore
